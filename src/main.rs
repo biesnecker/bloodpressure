@@ -57,6 +57,7 @@ struct ReportOpts {
 enum Command {
     Record(RecordOpts),
     Report(ReportOpts),
+    ShowPath,
 }
 
 fn get_data_paths() -> Result<(PathBuf, PathBuf)> {
@@ -114,10 +115,17 @@ fn do_report(opts: ReportOpts) -> Result<()> {
     Ok(())
 }
 
+fn do_show_path() -> Result<()> {
+    let (_, data_path) = get_data_paths()?;
+    println!("Data Path: {:?}", data_path);
+    Ok(())
+}
+
 fn main() -> Result<()> {
     let command = Command::from_args();
     match command {
         Command::Record(opts) => do_record(opts),
         Command::Report(opts) => do_report(opts),
+        Command::ShowPath => do_show_path(),
     }
 }
