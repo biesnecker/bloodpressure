@@ -22,7 +22,7 @@ impl Display for Record {
         write!(
             f,
             "{}\tBP: {}/{}\tPulse: {}",
-            local_timestamp.format("%Y-%M-%d %I:%M%P"),
+            local_timestamp.format("%Y-%m-%d %I:%M%P"),
             self.systolic,
             self.diastolic,
             self.pulse
